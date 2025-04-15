@@ -52,6 +52,8 @@ def get_stock_result(target_url):
 def send_email(subject, body):
     # Get email credentials from environment variables
     EMAIL_SENDER = os.environ.get("EMAIL_SENDER")
+    print("Using EMAIL_SENDER:", EMAIL_SENDER)
+
     EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
     EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
     
