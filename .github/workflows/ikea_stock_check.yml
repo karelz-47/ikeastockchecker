@@ -1,0 +1,26 @@
+name: IKEA Stock Checker
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Run at the beginning of every hour
+  workflow_dispatch:  # Optional: Allow manual trigger
+
+jobs:
+  check_stock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install Selenium and Dependencies
+        run: |
+          pip install selenium
+          # Optionally, install ChromeDriver if needed (using an action or script)
+      - name: Run IKEA Stock Checker
+        run: python ikea_stock_email.py "https://www.ikea.com/sk/sk/p/linnaberg-dvere-zelena-vzorovany-40584401/"
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
