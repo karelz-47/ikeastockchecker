@@ -19,7 +19,7 @@ jobs:
           pip install selenium
           # Optionally, install ChromeDriver if needed (using an action or script)
       - name: Run IKEA Stock Checker
-        run: python ikea_stock_email.py "https://www.ikea.com/sk/sk/p/linnaberg-dvere-zelena-vzorovany-40584401/"
+        run: python ikea_stock_checker.py "https://www.ikea.com/sk/sk/p/linnaberg-dvere-zelena-vzorovany-40584401/"
         env:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
